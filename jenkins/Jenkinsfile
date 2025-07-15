@@ -1,0 +1,32 @@
+pipeline {
+agent any
+
+environment {
+    DOCKER_BUILDKIT = '1'
+}
+
+stages {
+    stage('Build Docker Images') {
+        steps {
+            echo '🔨 Building order-service Docker image...'
+            bat 'docker build -t order-service ./order-service'
+
+            echo '🔨 Building payment-service Docker image...'
+            bat 'docker build -t payment-service ./payment-service'
+        }
+    }
+
+    stage('Test (Dummy)') {
+        steps {
+            echo '🧪 Running placeholder tests...'
+            bat 'echo Tests passed!'
+        }
+    }
+
+    stage('Deploy to Kubernetes') {
+        steps {
+            echo '🚀 Placeholder for kubectl apply (actual K8s deploy in Step 5)'
+            bat 'echo This is where kubectl apply will go'
+        }
+    }
+}
