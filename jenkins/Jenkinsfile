@@ -1,6 +1,5 @@
 pipeline {
 agent any
-
 environment {
     DOCKER_BUILDKIT = '1'
 }
@@ -29,4 +28,5 @@ stages {
             bat 'echo This is where kubectl apply will go'
         }
     }
+}
 }
